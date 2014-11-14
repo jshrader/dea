@@ -4,36 +4,37 @@
 #
 # Jeff Shrader
 # First version: 2011-12-29
-# Time-stamp: "2013-05-14 11:01:11 jgs"
+# Time-stamp: "2014-11-14 15:32:04 jeff.shrader"
 #
 
 # Preliminaries:
 library(FEAR)
-source("C:/Users/jgs/Documents/research/bin/dea/bin/working/dea_package.R")
+source("dea_package.R")
 
+## Walking through some examples, comparing my code to FEAR
+# Make a simple dataset with fixed inputs
 x.m.f <- matrix(c(10, 5, 3, 4, 5), ncol=1, nrow=5)
-x.m.v.2 <- matrix(c(2, 50, 3, 2, 2, 1, 3, 5, 2, 1), ncol=2, nrow=5)
+# Variable inputs
 x.m.v.1 <- matrix(c(2, 50, 3, 2, 2), ncol=1, nrow=5)
+# Outputs
 y.m <- matrix(c(5, 0, 6, 1, 1,
                 1, 4, 2, 0, 0), ncol=2, nrow=5)
+# My code
 cu <- f.dea(f.inputs = x.m.f, v.inputs=x.m.v.1,
             outputs=y.m,
             tech="V", orientation="OUT", report.z="YES", convex="YES")
-dea.graph(x.m.f, y.m, cu$theta)
+cu
+# dea.graph(x.m.f, y.m, cu$theta)
+dhat.m <- dea(XOBS=t(x.m.f), YOBS=t(y.m), ORIENTATION=2, RTS=1)
+dhat.m
+# dea.graph(x.m.f, y.m, dhat.m)
 
-dhat.m <- dea(XOBS=t(x.m.f), YOBS=t(y.m), ORIENTATION=2, RTS=3)
-dea.graph(x.m.f, y.m, dhat.m)
-
-y.m <- matrix(c(4, 5, 2, 2, 1, 1, 2, 4,
-                4, 5, 2, 1, 1, 2, 1, 1), ncol=2, nrow=8)
-
-
-
-
+# You can see that the thetas are the same! Note that variable inputs are
+# treated the same in FEAR as if you left them out (indeed, you can do the
+# same in my code unless you want to run f.jim afterwards).
 
 
-
-# Running FEAR DEA estimates
+## Running more complicated models
 data(ccr)
 # Outputs
 x <- t(matrix(ccr$x1, ncol=1, nrow=70))

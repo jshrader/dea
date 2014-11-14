@@ -9,6 +9,14 @@ The papers in the documentation folder are the one on which I based my coding of
 
 I don't have an official help file, so here is a quick run-down of the four commands and syntax you need:
 
+### Dependencies
+You will need the following R packages:
++linprog
++foreach
++doParallel (My code currently requires this one, but that might be a mistake)
+
+In addition, to run the `dea_sandbox.R` you will need FEAR.
+
 ### `f.dea`: 
 This command calculates efficient frontiers from an input or output oriented perspective for fixed or variable (or both) inputs. To calculate technical efficiency, include your variable inputs as if they were fixed. To calculate capacity utilization, include your variable inputs as variable inputs. See me and Dale's paper for more details.
 

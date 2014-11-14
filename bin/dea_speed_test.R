@@ -4,13 +4,13 @@
 #
 # Jeff Shrader
 # First version: 2011-12-29
-# Time-stamp: "2012-09-13 11:05:46 jgs"
+# Time-stamp: "2014-11-14 15:34:31 jeff.shrader"
 #
 
 ## Testing each of the basic functions
 rm(list = ls())
 library(FEAR)
-source("C:/Users/jgs/Documents/research/bin/dea/bin/working/dea_package.R")
+source("dea_package.R")
 nsims <- 20
 set.seed(2982)
 J <- 100
@@ -74,7 +74,7 @@ colMeans(timer.out[,7:30])
 
 ## Setup for testing differences in non-convex JIM
 rm(list = ls())
-source("C:/Users/jgs/Documents/research/bin/dea/bin/working/dea_package.R")
+source("dea_package.R")
 nsims <- 20
 J <- 50
 nv <- 1
@@ -172,7 +172,7 @@ system.time(
 ## Testing option effects
 rm(list = ls())
 library(FEAR)
-source("C:/Documents and Settings/JGS/My Documents/research/bin/dea/bin/working/dea_package.R")
+source("dea_package.R")
 
 J <- 100
 nv <- 10
@@ -242,7 +242,7 @@ proc.time() - ts
 ## Testing compiling
 rm(list = ls())
 library(FEAR)
-source("C:/Documents and Settings/JGS/My Documents/research/bin/dea/bin/working/dea_package.R")
+source("dea_package.R")
 library(compiler)
 library(rbenchmark)
 
@@ -273,7 +273,7 @@ benchmark(f.dea(f.inputs = x.m.f, outputs=y.m,
 ## Testing differences in non-convex JIM
 rm(list = ls())
 library(FEAR)
-source("C:/Documents and Settings/JGS/My Documents/research/bin/dea/bin/working/dea_package.R")
+source("dea_package.R")
 nsims <- 4
 
 set.seed(4920)
@@ -339,7 +339,7 @@ colMeans(timer.out[,7:33])
 ## Russell
 rm(list = ls())
 library(FEAR)
-source("C:/Documents and Settings/JGS/My Documents/research/bin/dea/bin/working/dea_package.R")
+source("dea_package.R")
 nsims <- 4
 
 set.seed(4620)
@@ -363,7 +363,7 @@ print(testr$rmo)
 ## Transposition
 rm(list = ls())
 library(FEAR)
-source("C:/Documents and Settings/JGS/My Documents/research/bin/dea/bin/working/dea_package.R")
+source("dea_package.R")
 library(compiler)
 library(rbenchmark)
 
@@ -394,8 +394,8 @@ rm(list = ls())
 require(foreach)
 require(doParallel)
 library('linprog')
-load("C:/Users/jgs/Documents/research/projects/epo_min_input/data/cu_interim_full.RData")
-source("C:/Users/jgs/Documents/research/bin/dea/bin/working/dea_package.R")
+load("cu_interim_full.RData")
+source("dea_package.R")
 
 trials <- 1
 
