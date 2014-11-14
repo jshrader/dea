@@ -1,0 +1,13 @@
+# Ignore all .Rout and Rhistory files
+*.Rout
+*.Rhistory
+*.RData
+# Ignore objects and archives.
+*.[oa]
+# Ignore emacs working files
+*~
+# Ignore other files that I tend to make as tests
+*.out
+*temp*
+*.txt
+#
