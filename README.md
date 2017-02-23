@@ -1,24 +1,24 @@
 dea
 ===
 
-The main code is in two files. The first, `dea_package.R`, contains everything you need to run DEA and industry model estimates. The second file contains a bunch of randomly generated examples I created to make sure that the code works. I include the second file because it might be helpful to see examples
+The main code is in two files. The first, `dea_package.R`, contains everything you need to run DEA and industry model estimates. The second file contains examples for code testing. 
 
-I based lots of my syntax on the package FEAR (http://www.clemson.edu/economics/faculty/wilson/Software/FEAR/fear.html), so if you use that package, things should be somewhat similar. 
+I based my DEA syntax on the package FEAR (http://www.clemson.edu/economics/faculty/wilson/Software/FEAR/fear.html), so if you use that package, things should be familiar. 
 
-The papers in the documentation folder are the one on which I based my coding of the Industry Model (Kerstens et al 2005), the paper on which I based the DEA code (Reid et al 2003), and the paper Dale and I wrote on the EPO (Shrader and Squires 2013).
+The papers in the documentation folder are: the one on which I based my coding of the industry model (Kerstens et al 2005), the paper on which I based the DEA code (Reid et al 2003), and the paper Dale and I wrote on the EPO (Shrader and Squires 2013).
 
 I don't have an official help file, so here is a quick run-down of the four commands and syntax you need:
 
 ### Dependencies
 You will need the following R packages:
-+linprog
-+foreach
-+doParallel (My code currently requires this one, but that might be a mistake)
+* linprog
+* foreach
+* doParallel (My code currently requires this one, but that might be a mistake)
 
-In addition, to run the `dea_sandbox.R` you will need FEAR.
+In addition, to run the `dea_sandbox.R` you will need FEAR so that results can be compared.
 
 ### `f.dea`: 
-This command calculates efficient frontiers from an input or output oriented perspective for fixed or variable (or both) inputs. To calculate technical efficiency, include your variable inputs as if they were fixed. To calculate capacity utilization, include your variable inputs as variable inputs. See me and Dale's paper for more details.
+This command calculates efficient frontiers from an input or output oriented perspective for fixed or variable (or both) inputs. To calculate technical efficiency, include your variable inputs as if they were fixed. To calculate capacity utilization, include your variable inputs as variable inputs. See my and Dale's paper for more details.
 
 Syntax: 
 
@@ -26,11 +26,11 @@ Syntax:
 
 Variables:
 
-`f.inputs` = an (n x k_f) matrix of fixed inputs (e.g. tonnage) where n is the number of vessels and k is the number of fixed inputs.
+`f.inputs` = an (n by k_f) matrix of fixed inputs (e.g. tonnage) where n is the number of firms and k is the number of fixed inputs.
 
-`v.inputs` (optional) = an (n x k_v) matrix of variable inputs (e.g. days).
+`v.inputs` (optional) = an (n by k_v) matrix of variable inputs (e.g. days).
 
-`outputs` = an (n x j) matrix of outputs where j is the number of outputs.
+`outputs` = an (n by j) matrix of outputs where j is the number of outputs.
 
 `tech` = 'V', 'N', or 'C' for variable, non-increasing, or constant technology. To my mind, there is no reason in practice to run anything other than 'V'. If you want to run 'C', use FEAR because my code will probably break.
 
@@ -38,9 +38,9 @@ Variables:
 
 `report.z` = Set this to 'YES' for all runs! I don't know why I was silly and set the default to 'NO'
 
-`slack`, and `convex` should be left at their defaults for your analysis.
+`slack`, and `convex` should be left at their defaults for standard analyses.
 
-`output` = a list containing *theta* and *lambda*. *Theta* gives the relative efficiency of the vessel (on a scale between 0 and 1) and *lambda* gives the weights on each efficient vessel that the vessel in question should place in order to reach the frontier. Another way of saying this is that an inefficient vessel should strive to be a convex combination of some efficient vessels, and *lambda* tells you the weights in that convex combination. An efficient vessel should always have a lambda equal to 1 for themselves. This is actually the scaling of the variable outputs...ok, I am actually forgetting exactly what *lambda* tells us, so I might get back to you on this.
+`output` = a list containing *theta* and *lambda*. *Theta* gives the relative efficiency of the vessel (on a scale between 0 and 1) and *lambda* gives the weights on each efficient vessel that the vessel in question should place in order to reach the frontier. Another way of saying this is that an inefficient vessel should strive to be a convex combination of some efficient vessels, and *lambda* tells you the weights in that convex combination. An efficient vessel should always have a lambda equal to 1 for themselves. 
 
 Example:
 ```R
@@ -94,7 +94,7 @@ Variables:
 Example:
 ```R
 # Call the package
-source("C:/Users/jgs/Documents/research/bin/dea/bin/working/dea_package.R")
+source("path/to/dea_package.R")
 # Generate random data
 set.seed(2982)
 J <- 100
